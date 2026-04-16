@@ -1,0 +1,9 @@
+.empty-state {
+  text-align: center;
+  padding: 25px;
+  color: #7c3aed;
+  background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+  border-radius: 12px;
+  margin-top: 20px;
+  font-size: 16px;
+}

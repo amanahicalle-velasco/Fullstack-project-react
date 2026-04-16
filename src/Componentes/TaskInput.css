@@ -1,0 +1,31 @@
+.task-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #a78bfa;
+  border-width: 3px ;
+  border-radius: 8px;
+  outline: none;
+}
+.task-input input:focus {
+  border-color: #7c3aed;
+  
+}
+.task-input button {
+  padding: 10px 15px;
+  background-color: #a78bfa;
+  color: white ;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.task-input button:hover {
+  background-color: #7c3aed;
+}
