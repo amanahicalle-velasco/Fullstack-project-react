@@ -5,6 +5,7 @@ import TaskInput from "./Componentes/TaskInput";
 import Footer from "./Componentes/Footer";
 import EmptyState from "./Componentes/EmptyState";
 
+
 type Task = {
   id: number;
   text: string;
@@ -16,7 +17,7 @@ function App() {
    
   const [tasks, setTasks] = useState<Task[]>([]);
   const fetchTasks = () => {
-  fetch("http://localhost:3000/tasks")
+    fetch(`${import.meta.env.VITE_API_URL}/tasks`)
     .then(res => res.json())
     .then(data => {
       const formatted = data.map((task: any) => ({
@@ -42,7 +43,7 @@ function App() {
        completed: false,
     };
 
-    fetch("http://localhost:3000/tasks", {
+    fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -66,7 +67,7 @@ function App() {
   };  
  
     const toggleTask = (id: number, completed: boolean) => {
-  fetch(`http://localhost:3000/tasks/${id}`, {
+  fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json"
@@ -78,7 +79,7 @@ function App() {
 };
   
   const deleteTask = (id: number) => {
-  fetch(`http://localhost:3000/tasks/${id}`, {
+  fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {
     method: "DELETE"
   })
     .then(() => fetchTasks()) // 🔥 vuelve a cargar todo
