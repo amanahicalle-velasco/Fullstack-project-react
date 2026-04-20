@@ -3,14 +3,16 @@ require("dotenv").config();
 const express = require("express");
 const cors= require("cors");
 const { PrismaClient } = require("@prisma/client");
-const { PrismaPg } = require("@prisma/adapter-pg");
+//const { PrismaPg } = require("@prisma/adapter-pg");
 const jwt = require("jsonwebtoken");
 const SECRET_KEY = "mi_clave_secreta";
 
-const adapter = new PrismaPg({
+/*const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL,
 });
-const prisma = new PrismaClient ({ adapter });
+const prisma = new PrismaClient ({ adapter });*/
+const prisma = new PrismaClient();
+
 const app = express();
 const PORT = 3000;
 

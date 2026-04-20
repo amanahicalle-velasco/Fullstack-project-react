@@ -13,10 +13,7 @@ type Task = {
 
 function App() {
 
-  /*1) Cambio importante: 
-  Quitamos los datos fake del frontend.
-  Ahora las tareas vendran del backend */
-  
+   
   const [tasks, setTasks] = useState<Task[]>([]);
   const fetchTasks = () => {
   fetch("http://localhost:3000/tasks")
@@ -36,34 +33,11 @@ function App() {
   useEffect(() => {
    fetchTasks();
     }, []);
-  //2)Conexion con el backend:
-
- /* useEffect(() => {
-  fetch("http://localhost:3000/tasks")
-    .then((response) => response.json())
-    .then((data) => {
-      const formattedTasks = data.map((task: any) => ({
-        text: task.title,
-        completed: task.completed
-      }));
-      setTasks(formattedTasks);
-    })
-    .catch((error) => console.error("Error al obtener tareas:", error));
-}, []);*/
-
-/* 1.1) Funcion ADD conecta al Backend (POST)
-  Ahora React ya no crea la tarea solo localmente
-  Ahora la envia al backend*/
+ 
 
   const addTask= (taskText: string) => {
     
-   /* const newTask = { 
-      id: Date.now(),
-      title: taskText,
-      completed: false,
-    };*/
-
-    const newTask = { 
+      const newTask = { 
      text: taskText, // 🔥 CAMBIO AQUÍ
        completed: false,
     };
@@ -85,16 +59,12 @@ function App() {
       completed: data.completed
   };
       //Agregamos la nueva tarea al estado para actualizar la pantalla
-     // setTasks([...tasks, formattedTask]);
+    
       setTasks(prev => [...prev, formattedTask]);
     })
     .catch(error => console.error("Error al crear tarea:", error));
   };  
  
- /* const deleteTask = (index: number) => {
-  setTasks(tasks.filter((_, i) => i !== index));
-  }; */
-
     const toggleTask = (id: number, completed: boolean) => {
   fetch(`http://localhost:3000/tasks/${id}`, {
     method: "PUT",
@@ -115,12 +85,6 @@ function App() {
     .catch(error => console.error("Error al eliminar:", error));
 };
   
-  /*const toggleTask = (index: number) => {
-    const newTasks = [...tasks];
-    newTasks[index].completed = !newTasks[index].completed;
-    setTasks(newTasks);
-  };*/
-
   const pendingTasks = tasks.filter(task => !task.completed);
   const totalTasks = tasks.length;
   const completedTasks = tasks.filter(task => task.completed);
