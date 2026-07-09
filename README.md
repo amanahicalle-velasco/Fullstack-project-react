@@ -2,7 +2,7 @@
  
 Aplicación web Full Stack tipo Task Manager que permite a los usuarios realizar operaciones CRUD (crear, ver, actualizar y eliminar) para gestionar tareas de manera eficiente y persistente.
  
-<!-- BADGE_CI -->
+[![CI](https://github.com/amanahicalle-velasco/Fullstack-project-react/actions/workflows/ci.yml/badge.svg)](https://github.com/amanahicalle-velasco/Fullstack-project-react/actions/workflows/ci.yml)
  
 ## 🚀 Instalación local
  
