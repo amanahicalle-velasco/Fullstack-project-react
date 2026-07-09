@@ -33,4 +33,10 @@ PORT=
  
 PostgreSQL con migraciones y seeds gestionados con Prisma (ver Módulo 1).
 
-Prueba de protección de la rama main.
+## 👩‍💻 Tecnologías utilizadas
+
+- React
+- Node.js
+- Express
+- Prisma
+- PostgreSQL
