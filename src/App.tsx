@@ -14,7 +14,7 @@ type Task = {
 
 function App() {
 
-   
+ 
   const [tasks, setTasks] = useState<Task[]>([]);
   const fetchTasks = () => {
     fetch(`${import.meta.env.VITE_API_URL}/tasks`)
@@ -110,6 +110,6 @@ function App() {
       completed={completedTasks.length} 
       />
     </div>
-  );
+   //parentesis de return eliminado
 }
 export default App;
