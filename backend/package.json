@@ -7,8 +7,10 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts"
-  },
+  "dev": "ts-node-dev src/index.ts",
+  "build": "tsc",
+  "lint": "echo \"No lint configured yet\""
+},
   "keywords": [],
   "dependencies": {
     "@next-auth/prisma-adapter": "^1.0.7",
