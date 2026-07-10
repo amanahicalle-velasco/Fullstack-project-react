@@ -110,6 +110,6 @@ function App() {
       completed={completedTasks.length} 
       />
     </div>
-   );//parentesis de return eliminado
+   //parentesis de return eliminado
 }
 export default App;
