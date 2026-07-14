@@ -82,6 +82,10 @@ jobs:
       # Frontend
       - name: Instalar frontend
         run: npm ci
+        
+      - name: Crear .env del frontend
+        run: |
+          echo "VITE_API_URL=http://localhost:3000" > .env
 
       # Backend
       - name: Instalar backend
