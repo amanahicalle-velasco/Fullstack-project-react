@@ -17,6 +17,7 @@ function App() {
  
   const [tasks, setTasks] = useState<Task[]>([]);
   const fetchTasks = () => {
+    console.log("API URL:", import.meta.env.VITE_API_URL);
     fetch(`${import.meta.env.VITE_API_URL}/tasks`)
     .then(res => res.json())
     .then(data => {
@@ -42,6 +43,7 @@ function App() {
      text: taskText, // 🔥 CAMBIO AQUÍ
        completed: false,
     };
+    console.log("Creando tarea en:", `${import.meta.env.VITE_API_URL}/tasks`);
 
     fetch(`${import.meta.env.VITE_API_URL}/tasks`, {
       method: "POST",
@@ -51,20 +53,25 @@ function App() {
       body: JSON.stringify(newTask),
     })
     
-    .then ((response) => response.json())
-    .then(data => {
-      console.log("Tarea creada en backend:", data);
-      const formattedTask = {
-      id: data.id,
-      text: data.text,
-      completed: data.completed
+    .then(async (response) => {
+  console.log("Status:", response.status);
+
+  const data = await response.json();
+
+  console.log("Respuesta:", data);
+
+  if (!response.ok) {
+    throw new Error("Error del backend");
+  }
+
+  const formattedTask = {
+    id: data.id,
+    text: data.text,
+    completed: data.completed,
   };
-      //Agregamos la nueva tarea al estado para actualizar la pantalla
-    
-      setTasks(prev => [...prev, formattedTask]);
-    })
-    .catch(error => console.error("Error al crear tarea:", error));
-  };  
+
+  setTasks(prev => [...prev, formattedTask]);
+})
  
     const toggleTask = (id: number, completed: boolean) => {
   fetch(`${import.meta.env.VITE_API_URL}/tasks/${id}`, {
