@@ -46,7 +46,7 @@ test("un usuario puede crear una tarea y verla en la lista", async ({ page }) =>
     .click();
 
   await expect(
-  page.getByText("ESTA TAREA NO EXISTE").first()
+  page.getByText(nombre).first()
 ).toBeVisible();
 
 });
