@@ -92,7 +92,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header />
+      <Header // />
       <TaskInput onAddTask={addTask} />
       {tasks.length === 0 ? (
         <EmptyState />
