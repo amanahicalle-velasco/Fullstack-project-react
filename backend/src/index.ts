@@ -45,6 +45,12 @@ app.get("/", (req:any, res:any) => {
     res.send("Backend is running");
 });
 
+app.get("/health", (req: any, res: any) => {
+  res.status(200).json({
+    status: "ok"
+  });
+});
+
 app.get("/tasks",async (req:any, res:any) => {
   try {
     const tasks = await prisma.task.findMany();

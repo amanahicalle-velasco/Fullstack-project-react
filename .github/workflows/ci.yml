@@ -139,3 +139,27 @@ jobs:
 
       - name: Ejecutar pruebas E2E
         run: npx playwright test --project=chromium
+  
+  deploy-produccion:
+    name: Deploy a Producción (manual)
+
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.confirmacion == 'DEPLOY'
+
+    needs:
+      - frontend
+      - backend
+      - pruebas
+      - e2e
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalar Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Desplegar a Railway (producción)
+        run: railway up --service backend --environment production
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}  
