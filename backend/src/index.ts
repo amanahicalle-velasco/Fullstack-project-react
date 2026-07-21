@@ -128,7 +128,7 @@ app.delete("/tasks/:id", async (req:any, res:any) => {
   }
 });
 
-
+throw new Error("Fallo simulado para laboratorio");
 
 app.listen (PORT, () => {
     console.log (`Server is running on port ${PORT}`);
