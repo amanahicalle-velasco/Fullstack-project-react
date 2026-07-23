@@ -37,4 +37,4 @@ Prueba de protección de la rama main.
 
 ## Demostración Final
 
-Verificación de integración total
+Verificación final de integración total
